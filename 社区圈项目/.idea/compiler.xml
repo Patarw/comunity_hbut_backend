@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hbut_community" />
+        <module name="hbut_eureka" />
+        <module name="hbut_user" />
+        <module name="hbut_gateway" />
+        <module name="hbut_product" />
+        <module name="community_common" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="community_common" options="-parameters" />
+      <module name="community_parent" options="-parameters" />
+      <module name="hbut_community" options="-parameters" />
+      <module name="hbut_eureka" options="-parameters" />
+      <module name="hbut_gateway" options="-parameters" />
+      <module name="hbut_product" options="-parameters" />
+      <module name="hbut_user" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,10 @@
+com\hbut\community\client\UserClient.class
+com\hbut\community\dao\ArticleRepository.class
+com\hbut\community\CommunityApplication.class
+com\hbut\community\client\impl\UserClientImpl.class
+com\hbut\community\service\ArticleService.class
+com\hbut\community\controller\ArticleController.class
+com\hbut\community\entity\Article.class
+com\hbut\community\config\InterceptorConfig.class
+com\hbut\community\interceptor\JwtInterceptor.class
+com\hbut\community\config\SwaggerConfig.class

@@ -1,0 +1,23 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: hbut-product #指定服务名
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://101.200.182.241:3306/community?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    show-sql: true
+  #redis:
+  #  host: 101.200.182.241
+  #rabbitmq:
+  #  host: 101.200.182.241
+eureka:
+  client:
+    service-url:
+      defaultZone: http://101.200.182.241:6868/eureka
+  instance:
+    prefer-ip-address: true

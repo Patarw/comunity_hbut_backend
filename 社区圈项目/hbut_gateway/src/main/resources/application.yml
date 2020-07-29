@@ -1,0 +1,26 @@
+server:
+  port: 9005
+spring:
+  application:
+    name: hbut-manager #指定服务名
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    prefer-ip-address: true
+zuul:
+  max:
+    host:
+      connections: 500
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+  routes:
+    hbut-user: #用户服务
+      path: /user/** #配置请求URL的请求规则
+      serviceId: hbut-user #指定Eureka注册中心中的服务id
+    hbut-community: #社区服务
+      path: /community/** #配置请求URL的请求规则
+      serviceId: hbut-community #指定Eureka注册中心中的服务id
+  sensitive-headers:  #放行敏感头信息
