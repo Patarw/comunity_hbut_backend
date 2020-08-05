@@ -2,6 +2,7 @@ package com.hbut.user.controller;
 
 import VO.UserVO;
 import com.hbut.user.entity.User;
+import com.hbut.user.form.UserForm;
 import com.hbut.user.service.UserService;
 import VO.Result;
 import VO.Void;
@@ -12,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -114,5 +116,59 @@ public class UserController {
     @RequestMapping(value = "/wantToBeFriendList",method = RequestMethod.POST)
     public Result<List<UserVO>> wantToBeFriendList(Integer id){
       return userService.wantToBeFriendList(id);
+    }
+
+
+    /**通过mobile获取用户id**/
+    @ApiImplicitParam(name = "Authorization", value = "需要token认证", required = false, dataType = "String",paramType = "header")
+    @ApiOperation("通过mobile获取用户id")
+    @RequestMapping(value = "/getUserIdByMobile",method = RequestMethod.POST)
+    public Result<Map<String,Integer>> getUserIdByMobile(String mobile){
+        return userService.getUserIdByMobile(mobile);
+    }
+
+    /**更新用户信息**/
+    @ApiImplicitParam(name = "Authorization", value = "需要token认证", required = false, dataType = "String",paramType = "header")
+    @ApiOperation("更新用户信息,UserForm里面的参数传几个更新几个，但不能为空")
+    @RequestMapping(value = "/updateUserMsg",method = RequestMethod.POST)
+    public Result<Void> updateUserMsg(Integer userId, @RequestBody UserForm userForm){
+        return userService.updateUserMsg(userId,userForm);
+    }
+
+    /**修改手机号**/
+    @ApiImplicitParam(name = "Authorization", value = "需要token认证", required = false, dataType = "String",paramType = "header")
+    @ApiOperation("修改手机号")
+    @RequestMapping(value = "/updateMobile",method = RequestMethod.POST)
+    public Result<Void> updateMobile(Integer userId,String mobile,String code){
+        if (code == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        if (userService.registerCheck(code,mobile)){
+            return userService.updateMobile(userId,mobile);
+        }else{
+            return Result.newResult(ResultEnum.REGISTER_ERROR);
+        }
+    }
+
+    /**通过手机验证修改密码**/
+    @ApiImplicitParam(name = "Authorization", value = "需要token认证", required = false, dataType = "String",paramType = "header")
+    @ApiOperation("通过手机验证修改密码")
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
+    public Result<Void> updatePassword(Integer userId,String password,String code,String mobile){
+        if (code == null || mobile == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        if (userService.registerCheck(code,mobile)){
+            return userService.updatePassword(userId,password);
+        }else{
+            return Result.newResult(ResultEnum.REGISTER_ERROR);
+        }
+    }
+
+    /**上传图片文件到阿里云服务器，返回图片url**/
+    @ApiOperation("上传图片文件到阿里云服务器，返回图片url,最多2MB,图片格式最好为png，jpg")
+    @RequestMapping(value = "/uploadImage",method = RequestMethod.POST)
+    public Result<Map<String,String>> uploadImage(@RequestParam("file") MultipartFile file){
+        return userService.uploadImage(file);
     }
 }

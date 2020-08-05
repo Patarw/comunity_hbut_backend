@@ -20,7 +20,7 @@ public enum ResultEnum {
     ROLE_ERROR(9, "您不具备该角色权限"),
     NO_LABEL_MSG(10,"标签不存在"),
     NO_ARTICLE_MSG(13,"文章不存在"),
-    REGISTER_ERROR(14,"注册失败，验证码错误"),
+    REGISTER_ERROR(14,"验证码错误"),
     REGISTER_MOBILE_ERROR(15,"注册失败，电话号码已经被注册"),
     FRIEND_ALREADY_EXIST(16,"好友已添加，无需重复添加"),
     PRODUCT_STOCK_ERROR(17,"商品库存不足"),

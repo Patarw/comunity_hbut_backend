@@ -1035,26 +1035,32 @@
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="257" parent="239" name="PRIMARY">
+    <column id="257" parent="239" name="img_url">
+      <Position>11</Position>
+      <Comment>图片url</Comment>
+      <DataType>json|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="258" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="258" parent="240" name="user_id">
+    <column id="259" parent="240" name="user_id">
       <Position>1</Position>
       <Comment>用户id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="240" name="friend_id">
+    <column id="260" parent="240" name="friend_id">
       <Position>2</Position>
       <Comment>好友id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="240" name="friend_status">
+    <column id="261" parent="240" name="friend_status">
       <Position>3</Position>
       <Comment>好友申请状态，0为待同意，1为已同意，2为不同意</Comment>
       <DataType>tinyint(4)|0s</DataType>
@@ -1062,40 +1068,40 @@
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="240" name="createTime">
+    <column id="262" parent="240" name="createTime">
       <Position>4</Position>
       <Comment>成为好友的时间</Comment>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="262" parent="240" name="PRIMARY">
+    <key id="263" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id
 friend_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="263" parent="241" name="id">
+    <column id="264" parent="241" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="241" name="market_name">
+    <column id="265" parent="241" name="market_name">
       <Position>2</Position>
       <Comment>商家名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="241" name="market_describe">
+    <column id="266" parent="241" name="market_describe">
       <Position>3</Position>
       <Comment>商家描述</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="241" name="create_time">
+    <column id="267" parent="241" name="create_time">
       <Position>4</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1103,7 +1109,7 @@ friend_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="241" name="update_time">
+    <column id="268" parent="241" name="update_time">
       <Position>5</Position>
       <Comment>修改时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1112,57 +1118,57 @@ friend_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <key id="268" parent="241" name="PRIMARY">
+    <key id="269" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="269" parent="242" name="detail_id">
+    <column id="270" parent="242" name="detail_id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="242" name="order_id">
+    <column id="271" parent="242" name="order_id">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="242" name="product_id">
+    <column id="272" parent="242" name="product_id">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="242" name="product_name">
+    <column id="273" parent="242" name="product_name">
       <Position>4</Position>
       <Comment>商品名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="242" name="product_price">
+    <column id="274" parent="242" name="product_price">
       <Position>5</Position>
       <Comment>当前价格，单位分</Comment>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="242" name="product_quantity">
+    <column id="275" parent="242" name="product_quantity">
       <Position>6</Position>
       <Comment>数量</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="242" name="product_icon">
+    <column id="276" parent="242" name="product_icon">
       <Position>7</Position>
       <Comment>小图</Comment>
       <DataType>varchar(512)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="242" name="create_time">
+    <column id="277" parent="242" name="create_time">
       <Position>8</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1170,7 +1176,7 @@ friend_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="242" name="update_time">
+    <column id="278" parent="242" name="update_time">
       <Position>9</Position>
       <Comment>修改时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1179,53 +1185,53 @@ friend_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <key id="278" parent="242" name="PRIMARY">
+    <key id="279" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>detail_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="279" parent="243" name="order_id">
+    <column id="280" parent="243" name="order_id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="243" name="buyer_name">
+    <column id="281" parent="243" name="buyer_name">
       <Position>2</Position>
       <Comment>买家名字</Comment>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="243" name="buyer_phone">
+    <column id="282" parent="243" name="buyer_phone">
       <Position>3</Position>
       <Comment>买家电话</Comment>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="243" name="buyer_address">
+    <column id="283" parent="243" name="buyer_address">
       <Position>4</Position>
       <Comment>买家地址</Comment>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="243" name="buyer_id">
+    <column id="284" parent="243" name="buyer_id">
       <Position>5</Position>
       <Comment>买家id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="243" name="order_amount">
+    <column id="285" parent="243" name="order_amount">
       <Position>6</Position>
       <Comment>订单总金额</Comment>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="243" name="order_status">
+    <column id="286" parent="243" name="order_status">
       <Position>7</Position>
       <Comment>订单状态，默认为新下单</Comment>
       <DataType>tinyint(3)|0s</DataType>
@@ -1233,7 +1239,7 @@ friend_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="243" name="pay_status">
+    <column id="287" parent="243" name="pay_status">
       <Position>8</Position>
       <Comment>支付状态，默认为未支付</Comment>
       <DataType>tinyint(3)|0s</DataType>
@@ -1241,7 +1247,7 @@ friend_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="243" name="create_time">
+    <column id="288" parent="243" name="create_time">
       <Position>9</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1249,7 +1255,7 @@ friend_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="288" parent="243" name="update_time">
+    <column id="289" parent="243" name="update_time">
       <Position>10</Position>
       <Comment>修改时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1258,33 +1264,33 @@ friend_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <key id="289" parent="243" name="PRIMARY">
+    <key id="290" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>order_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="290" parent="244" name="category_id">
+    <column id="291" parent="244" name="category_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="244" name="category_name">
+    <column id="292" parent="244" name="category_name">
       <Position>2</Position>
       <Comment>类目名字</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="244" name="category_type">
+    <column id="293" parent="244" name="category_type">
       <Position>3</Position>
       <Comment>类目编号</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="244" name="create_time">
+    <column id="294" parent="244" name="create_time">
       <Position>4</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1292,7 +1298,7 @@ friend_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="244" name="update_time">
+    <column id="295" parent="244" name="update_time">
       <Position>5</Position>
       <Comment>修改时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1301,58 +1307,58 @@ friend_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <key id="295" parent="244" name="PRIMARY">
+    <key id="296" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>category_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="296" parent="245" name="product_id">
+    <column id="297" parent="245" name="product_id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="297" parent="245" name="product_name">
+    <column id="298" parent="245" name="product_name">
       <Position>2</Position>
       <Comment>商品名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="245" name="product_price">
+    <column id="299" parent="245" name="product_price">
       <Position>3</Position>
       <Comment>单价</Comment>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="299" parent="245" name="product_stock">
+    <column id="300" parent="245" name="product_stock">
       <Position>4</Position>
       <Comment>库存</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="300" parent="245" name="product_description">
+    <column id="301" parent="245" name="product_description">
       <Position>5</Position>
       <Comment>商品描述</Comment>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="245" name="product_icon">
+    <column id="302" parent="245" name="product_icon">
       <Position>6</Position>
       <Comment>图片</Comment>
       <DataType>varchar(512)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="245" name="market_id">
+    <column id="303" parent="245" name="market_id">
       <Position>7</Position>
       <Comment>商家id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="245" name="create_time">
+    <column id="304" parent="245" name="create_time">
       <Position>8</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1360,7 +1366,7 @@ friend_id</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="245" name="update_time">
+    <column id="305" parent="245" name="update_time">
       <Position>9</Position>
       <Comment>修改时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -1369,7 +1375,7 @@ friend_id</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <column id="305" parent="245" name="product_status">
+    <column id="306" parent="245" name="product_status">
       <Position>10</Position>
       <Comment>上架状态，默认为0正常状态</Comment>
       <DataType>tinyint(4)|0s</DataType>
@@ -1377,18 +1383,18 @@ friend_id</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="245" name="category_type">
+    <column id="307" parent="245" name="category_type">
       <Position>11</Position>
       <Comment>类目id</Comment>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="307" parent="245" name="PRIMARY">
+    <key id="308" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>product_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="308" parent="246" name="id">
+    <column id="309" parent="246" name="id">
       <Position>1</Position>
       <Comment>ID</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1396,88 +1402,88 @@ friend_id</ColNames>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="309" parent="246" name="mobile">
+    <column id="310" parent="246" name="mobile">
       <Position>2</Position>
       <Comment>手机号码</Comment>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="310" parent="246" name="password">
+    <column id="311" parent="246" name="password">
       <Position>3</Position>
       <Comment>密码</Comment>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="246" name="nickname">
+    <column id="312" parent="246" name="nickname">
       <Position>4</Position>
       <Comment>昵称</Comment>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="246" name="sex">
+    <column id="313" parent="246" name="sex">
       <Position>5</Position>
       <Comment>性别</Comment>
       <DataType>varchar(2)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="246" name="birthday">
+    <column id="314" parent="246" name="birthday">
       <Position>6</Position>
       <Comment>出生年月日</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="246" name="avatar">
+    <column id="315" parent="246" name="avatar">
       <Position>7</Position>
       <Comment>头像</Comment>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="246" name="email">
+    <column id="316" parent="246" name="email">
       <Position>8</Position>
       <Comment>E-Mail</Comment>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="246" name="regdate">
+    <column id="317" parent="246" name="regdate">
       <Position>9</Position>
       <Comment>注册日期</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="246" name="updatedate">
+    <column id="318" parent="246" name="updatedate">
       <Position>10</Position>
       <Comment>修改日期</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="246" name="lastdate">
+    <column id="319" parent="246" name="lastdate">
       <Position>11</Position>
       <Comment>最后登陆日期</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="246" name="interest">
+    <column id="320" parent="246" name="interest">
       <Position>12</Position>
       <Comment>兴趣</Comment>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="320" parent="246" name="fanscount">
+    <column id="321" parent="246" name="fanscount">
       <Position>13</Position>
       <Comment>粉丝数</Comment>
       <DataType>int(20)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="321" parent="246" name="followcount">
+    <column id="322" parent="246" name="followcount">
       <Position>14</Position>
       <Comment>关注数</Comment>
       <DataType>int(20)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="322" parent="246" name="PRIMARY">
+    <key id="323" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

@@ -2,7 +2,10 @@ utils\JwtUtil.class
 VO\ArticleVO.class
 enums\ResultEnum.class
 VO\Void.class
+enums\ProductStatusEnums.class
+enums\OrderStatusEnums.class
 VO\UserVO.class
+enums\PayStatusEnums.class
 VO\PageVO$PageVOBuilder.class
 VO\Result.class
 args\PageArg.class

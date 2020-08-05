@@ -1,6 +1,7 @@
 com\hbut\community\client\UserClient.class
 com\hbut\community\dao\ArticleRepository.class
 com\hbut\community\CommunityApplication.class
+com\hbut\community\form\ArticleForm.class
 com\hbut\community\client\impl\UserClientImpl.class
 com\hbut\community\service\ArticleService.class
 com\hbut\community\controller\ArticleController.class

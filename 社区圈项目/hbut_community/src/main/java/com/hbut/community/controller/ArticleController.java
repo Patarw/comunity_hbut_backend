@@ -4,12 +4,15 @@ import VO.*;
 import VO.Void;
 import args.PageArg;
 import com.hbut.community.entity.Article;
+import com.hbut.community.form.ArticleForm;
 import com.hbut.community.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @Api(tags = "社区交流管理接口")
@@ -25,8 +28,8 @@ public class ArticleController {
     @ApiImplicitParam(name = "Authorization", value = "需要token认证", required = false, dataType = "String",paramType = "header")
     @ApiOperation("发布帖子，一定要传user_id")
     @RequestMapping(value = "/publishArticle",method = RequestMethod.POST)
-    public Result<Void> publishArticle(@RequestBody Article article){
-        return articleService.publishArticle(article);
+    public Result<Void> publishArticle(@Valid @RequestBody ArticleForm articleForm){
+        return articleService.publishArticle(articleForm);
     }
 
     /**分页获取帖子**/
@@ -64,5 +67,13 @@ public class ArticleController {
     @RequestMapping(value = "/findPublishedArticle",method = RequestMethod.POST)
     public Result<PageVO<ArticleVO>> findPublishedArticle(Integer userId,@RequestBody PageArg arg){
         return articleService.findPublishedArticle(userId,arg);
+    }
+
+    /**更新帖子内容**/
+    @ApiImplicitParam(name = "Authorization", value = "需要token认证", required = false, dataType = "String",paramType = "header")
+    @ApiOperation("更新帖子内容")
+    @RequestMapping(value = "/updateArticle",method = RequestMethod.POST)
+    public Result<Void> updateArticle(Integer articleId, @Valid @RequestBody ArticleForm articleForm){
+        return articleService.updateArticle(articleId,articleForm);
     }
 }

@@ -6,6 +6,7 @@ import args.PageArg;
 import com.hbut.community.client.UserClient;
 import com.hbut.community.dao.ArticleRepository;
 import com.hbut.community.entity.Article;
+import com.hbut.community.form.ArticleForm;
 import enums.ResultEnum;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import utils.JwtUtil;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,16 +36,14 @@ public class ArticleService {
     private UserClient userClient;
 
     /**发布帖子**/
-    public Result<Void> publishArticle(Article article){
+    public Result<Void> publishArticle(ArticleForm articleForm){
         //验证token
         String token = (String) request.getAttribute("claims_user");
         if (token == null || "".equals(token)){
             return Result.newResult(ResultEnum.AUTHENTICATION_ERROR);
         }
-
-        if(article == null){
-            return Result.newResult(ResultEnum.PARAM_ERROR);
-        }
+        Article article = new Article();
+        BeanUtils.copyProperties(articleForm,article);
         article.setCheckStatus(1);  //先直接过审，后面开发了admin之后再搞审核系统
         article.setCreateTime(new Date());
         article.setUpdateTime(new Date());
@@ -188,4 +188,23 @@ public class ArticleService {
         return Result.newSuccess(pageVo);
     }
 
+    /**更新帖子内容**/
+    public Result<Void> updateArticle(Integer articleId, ArticleForm articleForm){
+        //验证token
+        String token = (String) request.getAttribute("claims_user");
+        if (token == null || "".equals(token)){
+            return Result.newResult(ResultEnum.AUTHENTICATION_ERROR);
+        }
+
+        Article article = articleRepository.findArticleById(articleId);
+        if (article.getUserId() != articleForm.getUserId()){
+            return Result.newResult(ResultEnum.USER_NOT_EXIST);
+        }
+        if (articleForm.getImgUrl() != null){
+            article.setImgUrl(articleForm.getImgUrl());
+        }
+        article.setTitle(articleForm.getTitle());
+        article.setContent(articleForm.getContent());
+        return Result.newSuccess();
+    }
 }

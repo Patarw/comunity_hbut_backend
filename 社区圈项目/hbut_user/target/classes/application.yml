@@ -15,6 +15,10 @@ spring:
     host: 101.200.182.241
   #rabbitmq:
   #  host: 101.200.182.241
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
 eureka:
   client:
     service-url:

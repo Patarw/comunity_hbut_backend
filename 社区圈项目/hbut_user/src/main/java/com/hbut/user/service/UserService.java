@@ -2,8 +2,10 @@ package com.hbut.user.service;
 
 
 import VO.UserVO;
+import com.hbut.user.aliyunOss.AliyunOSSUtil;
 import com.hbut.user.dao.UserRepository;
 import com.hbut.user.entity.User;
+import com.hbut.user.form.UserForm;
 import com.hbut.user.utils.SendSms;
 import VO.Result;
 import VO.Void;
@@ -14,8 +16,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import utils.JwtUtil;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +38,9 @@ public class UserService {
     private JwtUtil jwtUtil;
     @Autowired
     private HttpServletRequest request;
+    //阿里云上传图片工具类
+    @Autowired
+    private AliyunOSSUtil aliyunOSSUtil;
     //@Autowired
     //private RabbitTemplate rabbitTemplate;
 
@@ -271,5 +279,122 @@ public class UserService {
             userVOList.add(userVO);
         }
         return Result.newSuccess(userVOList);
+    }
+
+    /**通过mobile获取用户id**/
+    public Result<Map<String,Integer>> getUserIdByMobile(String mobile){
+        String token = (String) request.getAttribute("claims_user");
+        if (token == null || "".equals(token)){
+            return Result.newResult(ResultEnum.AUTHENTICATION_ERROR);
+        }
+
+        if (mobile == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        User user = userRepository.findUserByMobile(mobile);
+        Map<String,Integer> map = new HashMap<>();
+        map.put("userId",user.getId());
+        return Result.newSuccess(map);
+    }
+
+    /**更新用户信息**/
+    public Result<Void> updateUserMsg(Integer userId,UserForm userForm){
+        String token = (String) request.getAttribute("claims_user");
+        if (token == null || "".equals(token)){
+            return Result.newResult(ResultEnum.AUTHENTICATION_ERROR);
+        }
+
+        if (userForm == null || userId == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        User user = userRepository.findUserById(userId);
+        if (user == null){
+            return Result.newResult(ResultEnum.USER_NOT_EXIST);
+        }
+        if (userForm.getAvatar() != null){
+            user.setAvatar(userForm.getAvatar());
+        }
+        if (userForm.getBirthday() != null){
+            user.setBirthday(userForm.getBirthday());
+        }
+        if (userForm.getEmail() != null){
+            user.setEmail(userForm.getEmail());
+        }
+        if (userForm.getInterest() != null){
+            user.setInterest(userForm.getInterest());
+        }
+        if (userForm.getNickname() != null){
+            user.setNickname(userForm.getNickname());
+        }
+        if (userForm.getSex() != null){
+            user.setSex(userForm.getSex());
+        }
+        userRepository.save(user);
+        return Result.newSuccess();
+    }
+
+    /**修改手机号**/
+    public Result<Void> updateMobile(Integer userId,String mobile){
+        String token = (String) request.getAttribute("claims_user");
+        if (token == null || "".equals(token)){
+            return Result.newResult(ResultEnum.AUTHENTICATION_ERROR);
+        }
+
+        if (userId == null || mobile == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        User user = userRepository.findUserById(userId);
+        if (user == null){
+            return Result.newResult(ResultEnum.USER_NOT_EXIST);
+        }
+        user.setMobile(mobile);
+        userRepository.save(user);
+        return Result.newSuccess();
+    }
+
+    /**通过手机验证修改密码**/
+    public Result<Void> updatePassword(Integer userId,String password){
+        String token = (String) request.getAttribute("claims_user");
+        if (token == null || "".equals(token)){
+            return Result.newResult(ResultEnum.AUTHENTICATION_ERROR);
+        }
+        if (userId == null || password == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        User user = userRepository.findUserById(userId);
+        if (user == null){
+            return Result.newResult(ResultEnum.USER_NOT_EXIST);
+        }
+        user.setPassword(encoder.encode(password));
+        userRepository.save(user);
+        return Result.newSuccess();
+    }
+
+    /**上传图片文件到阿里云服务器，返回图片url**/
+    public Result<Map<String,String>> uploadImage(MultipartFile file){
+        String filename = file.getOriginalFilename();
+        String uploadUrl = null;
+        if (file == null){
+            return Result.newResult(ResultEnum.PARAM_ERROR);
+        }
+        try {
+            if (file != null) {
+                if (!"".equals(filename.trim())) {
+                    File newFile = new File(filename);
+                    FileOutputStream os = new FileOutputStream(newFile);
+                    os.write(file.getBytes());
+                    os.close();
+                    file.transferTo(newFile);
+                    // 上传到OSS
+                    uploadUrl = aliyunOSSUtil.upLoad(newFile);
+                }
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Map<String,String> map = new HashMap<>();
+        map.put("imageUrl",uploadUrl);
+        return Result.newSuccess(map);
     }
 }

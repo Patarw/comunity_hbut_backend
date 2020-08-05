@@ -5,6 +5,7 @@ D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\
 D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\config\InterceptorConfig.java
 D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\config\SwaggerConfig.java
 D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\CommunityApplication.java
+D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\form\ArticleForm.java
 D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\interceptor\JwtInterceptor.java
 D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\entity\Article.java
 D:\project-main\社区圈项目\hbut_community\src\main\java\com\hbut\community\service\ArticleService.java

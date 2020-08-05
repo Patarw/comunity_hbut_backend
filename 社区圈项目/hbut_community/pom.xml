@@ -33,6 +33,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-5</artifactId>
+            <version>2.4.2</version>
+        </dependency>
     </dependencies>
 
     <!--打包上传到docker镜像中-->
